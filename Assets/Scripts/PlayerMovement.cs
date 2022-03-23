@@ -15,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] float lowJumpMultiplier = 2f;
 	[SerializeField] LayerMask whatIsGround;
 	[SerializeField] bool isGrounded = false;
-	[SerializeField] bool isJumping = false;
 	[SerializeField] Transform groundCheck;
 	[SerializeField] float checkRadius;
 	Rigidbody2D rb;
