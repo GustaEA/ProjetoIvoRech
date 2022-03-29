@@ -60,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
 		
 		if(isGrounded && Input.GetKeyDown(KeyCode.Space))
 		{
-			Debug.Log("AAAAA");
 			Jump();
 		}
 	}
@@ -71,11 +70,8 @@ public class PlayerMovement : MonoBehaviour
 	}
 	
 	void Jump()
-	{
-		if(Input.GetButtonDown("Jump"))
-		{
-			rb.velocity = Vector2.up * jumpForce;
-		}
+	{				
+		rb.velocity = Vector2.up * jumpForce;		
 	}
 	
 	private void OnDrawGizmos()
