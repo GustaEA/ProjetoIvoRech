@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private float walkSpeed;
 	[SerializeField] private float runSpeed;
 	[SerializeField] private float speed;
+	
+	[SerializeField] bool faceRight = true;
 	[Header("JUMP")]
 	[Range(1,10)]
 	[SerializeField] float jumpForce;
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] bool isGrounded = false;
 	[SerializeField] Transform groundCheck;
 	[SerializeField] float checkRadius;
+	
 	Rigidbody2D rb;
 	void Awake()
 	{
@@ -29,7 +32,16 @@ public class PlayerMovement : MonoBehaviour
 	{
 		Movement();
 		ProcessInput();
-		GroundCheck();
+		GroundCheck();		
+		
+		if (faceRight == false && movement > 0)
+		{
+			Flip();
+		}
+		else if(faceRight == true && movement < 0)
+		{
+			Flip();
+		}        
 		
 		if (rb.velocity.y < 0)
 		{
@@ -45,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		movement = Input.GetAxis("Horizontal");
 		rb.velocity = new Vector2(movement * speed, rb.velocity.y);
+		
+		
 	}
 	
 	void ProcessInput()
@@ -62,6 +76,12 @@ public class PlayerMovement : MonoBehaviour
 		{
 			Jump();
 		}
+	}
+	
+	void Flip()
+	{
+		faceRight = !faceRight;
+		transform.Rotate(0, 180, 0);
 	}
 	
 	void GroundCheck()
