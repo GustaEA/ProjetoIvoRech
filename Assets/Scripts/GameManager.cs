@@ -4,44 +4,22 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-	[SerializeField] PlayerMovement[] heros = new PlayerMovement[2];
-	[SerializeField] bool heroChangeBool = false;
+	public static GameManager instance;
+	public int Coins;
 	
 	void Start()
 	{
-		heros[0].enabled = true;
-		heros[1].enabled = false;
-	}
-	
-	void Update()
-	{
-		HeroChange();
-		
-		if(Input.GetKeyDown(KeyCode.E))
+		if(instance != null && instance != this)
 		{
-			if(heroChangeBool == false)
-			{
-				heroChangeBool = true;
-			}
-			else if (heroChangeBool == true
-			)
-			{
-				heroChangeBool = false;
-			}
-		}
-	}
-	
-	void HeroChange()
-	{
-		if (heroChangeBool == false)
-		{
-			heros[0].enabled = true;
-			heros[1].enabled = false;
+			Destroy(this);
 		}
 		else
 		{
-			heros[0].enabled = false;
-			heros[1].enabled = true;
+			instance = this;
 		}
+	}
+	public void GainCoin(int value)
+	{
+		Coins += value;
 	}
 }

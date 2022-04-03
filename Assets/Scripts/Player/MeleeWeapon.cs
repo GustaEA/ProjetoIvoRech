@@ -25,6 +25,17 @@ public class MeleeWeapon : MonoBehaviour
 		}
 	}
 	
+	public void EnableMeleeWeapon(bool weapon)
+	{
+		if(weapon == false)
+		{
+			this.enabled = false;
+		}
+		else
+		{
+			this.enabled = true;
+		}
+	}
 	void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(swordTransform.position, attackRange);

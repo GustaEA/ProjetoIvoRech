@@ -94,6 +94,18 @@ public class PlayerMovement : MonoBehaviour
 		rb.velocity = Vector2.up * jumpForce;		
 	}
 	
+	public void EnableMovement(bool enableMove)
+	{
+		if(enableMove == false)
+		{
+			this.enabled = false;
+		}
+		else
+		{
+			this.enabled = true;
+		}
+	}
+	
 	private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(groundCheck.position, checkRadius);

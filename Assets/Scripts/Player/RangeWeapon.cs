@@ -20,4 +20,16 @@ public class RangeWeapon : MonoBehaviour
 	{
 		Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 	}
+	
+	public void EnableRangeWeapon(bool weapon)
+	{
+		if(weapon == false)
+		{
+			this.enabled = false;
+		}
+		else
+		{
+			this.enabled = true;
+		}
+	}
 }
