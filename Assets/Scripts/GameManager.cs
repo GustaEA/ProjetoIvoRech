@@ -11,11 +11,12 @@ public class GameManager : MonoBehaviour
 	{
 		if(instance != null && instance != this)
 		{
-			Destroy(this);
+			Destroy(this.gameObject);
 		}
 		else
 		{
 			instance = this;
+			DontDestroyOnLoad(this);
 		}
 	}
 	public void GainCoin(int value)
